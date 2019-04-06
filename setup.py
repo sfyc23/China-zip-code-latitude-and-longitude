@@ -9,10 +9,10 @@ import os
 import re
 from setuptools import find_packages, setup, Command
 
-
 # What packages are required for this module to be executed?
 REQUIRED = [
     # 'requests', 'maya', 'records',
+    'pandas>=0.23.4',
 ]
 
 # What packages are optional?
@@ -27,20 +27,22 @@ EXTRAS = {
 
 current_dir = os.path.abspath(os.path.dirname(__file__))
 
+
 def get_meta():
     meta_re = re.compile(r"(?P<name>__\w+__) = '(?P<value>[^']+)'")
     meta_d = {}
-    with open(os.path.join(current_dir, 'china_region','__init__.py'),
+    with open(os.path.join(current_dir, 'china_region', '__init__.py'),
               encoding='utf8') as fp:
         for match in meta_re.finditer(fp.read()):
             meta_d[match.group('name')] = match.group('value')
     return meta_d
 
+
 try:
     with io.open(os.path.join(current_dir, 'README.md'), encoding='utf-8') as f:
         long_description = '\n' + f.read()
 except FileNotFoundError:
-    long_description = '汉字五笔转换模块/工具.'
+    long_description = '中国地区邮编经纬度/工具.'
 
 packages = [
     'china_region',
@@ -58,7 +60,7 @@ setup(
     author_email='sfyc23@gmail.com',
     license=meta_d['__license__'],
     python_requires='>=3.6.0',
-    url='https://github.com/sfyc23/china-zip-code',
+    url='https://github.com/sfyc23/China-zip-code-latitude-and-longitude',
     # packages=find_packages(exclude=('tests',)),
     packages=packages,
     # If your package is a single module, use this instead of 'packages':
@@ -70,21 +72,26 @@ setup(
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,
+    package_data={'china_region': ['region.csv']},
 
     classifiers=[
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
         'License :: OSI Approved :: MIT License',
+        'Operating System :: MacOS',
+        'Operating System :: Microsoft',
+        'Operating System :: POSIX',
+        'Operating System :: Unix',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'
     ],
-    keywords='china, zipCode,latitude,longitude',
+    keywords='China, zipCode, latitude, longitude',
 
 )
-
-
+# python setup.py sdist bdist_wheel
+# twine upload dist/*
 
 

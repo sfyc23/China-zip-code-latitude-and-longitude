@@ -1,11 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# from pywubi.utlis import (
-#     single_seg, combin_seg
-# )
-#
-
 import re
 from china_region.constants import (
     CITY_DF
@@ -41,8 +36,7 @@ def search(province=None, city=None, county=None):
 
     return my_df.to_dict('records')
 
-# if __name__ == '__main__':
-#
-#     ret = search(province = '广西省',county='临桂')
-#     print(ret)
 
+# if __name__ == '__main__':
+#     ret = search(province='广西省', county='临桂')
+#     print(ret)

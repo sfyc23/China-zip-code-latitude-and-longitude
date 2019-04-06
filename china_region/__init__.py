@@ -5,7 +5,7 @@ from china_region.core import (
 )
 
 __title__ = 'china_region'
-__version__ = '0.0.1'
+__version__ = '0.0.8'
 __author__ = 'sfyc23'
 __license__ = 'MIT'
 __copyright__ = '''

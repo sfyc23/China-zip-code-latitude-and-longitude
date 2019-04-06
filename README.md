@@ -1,58 +1,65 @@
-汉字五笔转换工具（Python 版）
+中国地区邮编经纬度/工具（Python 版）
 =============================
-[![pypi](https://img.shields.io/badge/pypi-0.0.1-yellow.svg)](https://pypi.org/project/pywubi) 
+[![pypi](https://img.shields.io/badge/pypi-0.0.8-yellow.svg)](https://pypi.org/project/china-region/) 
 ![python_vesion](https://img.shields.io/badge/python-%3E3-green.svg)  
 
    
-将汉字转为五笔码。现只支持 86 版编码。（ps:因为找到整理出 86 版五笔编码）
+中国地区的主要城市的经纬度与邮编
 
 ## 关于
 
-* GitHub: https://github.com/sfyc23/python-wubi  
+* GitHub: https://github.com/sfyc23/China-zip-code-latitude-and-longitude  
 * License: MIT license  
-* PyPI: https://pypi.org/project/pywubi  
-* Python version: 3
+* PyPI: https://pypi.org/project/china-region/ 
+* Python version: >= 3.5
 
 ## 特性
 
-1. 将词组转成五笔编码。比如词语：生死有命。换成五笔码为：'tgdw'；
-2. 返回汉字的所有可能的编码。如汉字：为 。换成五笔码为： 'ylyi', 'yly', 'yl', 'o'；
-3. 将一段句子，转成五笔码。如:天气不错，我们去散步吧!：五笔码为：'gdi', 'rnb', 'gii', 'qajg', '，', 'trnt', 'wun', 'fcu', 'aety', 'hir', 'kcn', '!'
+1. 使用地区的名称搜索获取经纬度与邮编。
+
 
 ## 安装
 
-    $ pip install pywubi
+    $ pip install china-region
+
+## 依赖库
+
+    pandas>=0.23.4
+
+## 升级
+
+    $ pip install -U china-region
 
 ## 使用示例
+```
+    >>> import china_region
+    >>> china_region.search(county='全州')
+    [{'province': '广西壮族自治区', 'city': '桂林市', 'county': '全州县', 'longitude': 111.07, 'latitude': 25.93, 'zipCode': '541500'}]
+    >>> china_region.search(province='广西省',city='桂林')
+    [{'province': '广西壮族自治区', 'city': '桂林市', 'county': '桂林市', 'longitude': 110.28, 'latitude': 25.28, 'zipCode': '541000'}]
+    >>> china_region.search(province='广西省',city='桂林',county='兴安')
+    [{'province': '广西壮族自治区', 'city': '桂林市', 'county': '兴安县', 'longitude': 110.67, 'latitude': 25.62, 'zipCode': '541399'}]
+```
 
-    >>> from pywubi import wubi
-    >>> wubi('我爱你')
-    ['trnt', 'epdc', 'wqiy']
-    >>> wubi('我爱你',multicode=True)  # 返回汉字的所有可能的五笔编码
-    [['trnt', 'trn', 'q'], ['epdc', 'epd', 'ep'], ['wqiy', 'wqi', 'wq']]
-    >>> wubi('我爱你', single=False) # 以词组的方法处理这些汉字
-    ['tewq']
+## 资源文件
+
+* [region.csv](https://github.com/sfyc23/China-zip-code-latitude-and-longitude/blob/c60a0d5ebeabbe4e316105b0f12a036e12928d9d/resource/region.csv)
+* [region.txt](https://github.com/sfyc23/China-zip-code-latitude-and-longitude/blob/c60a0d5ebeabbe4e316105b0f12a036e12928d9d/resource/region.txt)
+* [region.json](https://github.com/sfyc23/China-zip-code-latitude-and-longitude/blob/c60a0d5ebeabbe4e316105b0f12a036e12928d9d/resource/region.json)
+
+```
+北京市	北京市	北京市	116.4	39.9	100000
+北京市	北京市	东城区	116.42	39.93	100010
+北京市	北京市	西城区	116.37	39.92	100032
+北京市	北京市	崇文区	116.43	39.88	100000
+北京市	北京市	宣武区	116.35	39.87	100000
+北京市	北京市	朝阳区	116.43	39.92	100020
+北京市	北京市	丰台区	116.28	39.85	100071
+```
 
 ## Lincese
 
     MIT License
-
+    
     Copyright (c) 2019  Thunder Bouble
     
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
