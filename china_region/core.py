@@ -43,10 +43,6 @@ def search(province=None, city=None, county=None):
 
 # if __name__ == '__main__':
 #
-#     ret = wubi('我爱你')
+#     ret = search(province = '广西省',county='临桂')
 #     print(ret)
-#     ret = wubi('为',multicode=True)
-#     print(ret)
-#     ret = wubi('天气不错，我们去散步吧', single=True)
-#
-#     print(ret)
+
