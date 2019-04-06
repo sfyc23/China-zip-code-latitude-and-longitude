@@ -4,7 +4,7 @@
 ![python_vesion](https://img.shields.io/badge/python-%3E3-green.svg)  
 
    
-中国地区的主要城市的经纬度与邮编
+根据省市区获取中国经纬度和邮编
 
 ## 关于
 
@@ -15,7 +15,7 @@
 
 ## 特性
 
-1. 使用地区的名称搜索获取经纬度与邮编。
+1. 根据省市区获取经纬度和邮编。
 
 
 ## 安装
@@ -56,6 +56,8 @@
 北京市	北京市	朝阳区	116.43	39.92	100020
 北京市	北京市	丰台区	116.28	39.85	100071
 ```
+
+相似项目: [https://github.com/radiocontroller/china-location](https://github.com/radiocontroller/china-location)
 
 ## Lincese
 
