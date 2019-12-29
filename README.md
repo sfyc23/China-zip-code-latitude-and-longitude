@@ -33,12 +33,12 @@
 ## 使用示例
 ```
     >>> import china_region
-    >>> china_region.search(county='全州')
-    [{'province': '广西壮族自治区', 'city': '桂林市', 'county': '全州县', 'longitude': 111.07, 'latitude': 25.93, 'zipCode': '541500'}]
-    >>> china_region.search(province='广西省',city='桂林')
-    [{'province': '广西壮族自治区', 'city': '桂林市', 'county': '桂林市', 'longitude': 110.28, 'latitude': 25.28, 'zipCode': '541000'}]
-    >>> china_region.search(province='广西省',city='桂林',county='兴安')
-    [{'province': '广西壮族自治区', 'city': '桂林市', 'county': '兴安县', 'longitude': 110.67, 'latitude': 25.62, 'zipCode': '541399'}]
+    >>> china_region.search(county='华安')
+    [{'province': '福建省', 'city': '漳州市', 'county': '华安县', 'longitude': 117.53, 'latitude': 25.02, 'zipCode': '363800'}]
+    >>> china_region.search(province='福建省',city='华安')
+    [{'province': '福建省', 'city': '漳州市', 'county': '华安县', 'longitude': 117.53, 'latitude': 25.02, 'zipCode': '363800'}]
+    >>> china_region.search(province='贵州',city='贵阳',county='白云')
+    [{'province': '贵州省', 'city': '贵阳市', 'county': '白云区', 'longitude': 106.65, 'latitude': 26.68, 'zipCode': '550014'}]
 ```
 
 ## 资源文件
