@@ -8,7 +8,6 @@ from china_region.constants import (
 )
 
 
-
 def search(province=None, city=None, county=None):
     """
     >>> import china_region
@@ -53,7 +52,7 @@ def search(province=None, city=None, county=None):
 
     # 如果搜索城市名没有结果，而county为空，则把城市名赋值给县城名
     if cur_len == 0 and county is None:
-        county = county
+        county = city
 
     if county:
         scc = my_df['county'].str.contains(county)
