@@ -23,6 +23,15 @@ def search(province=None, city=None, county=None):
     :param county: str, 县
     :return:list
     """
+
+    # 如果是 "山东 济南"主动分割
+    if province and re.findall(r'\s+', province.strip()) and city is None and county is None:
+        ss = re.split(r'\s+', province)
+        if len(ss) == 2:
+            province, city = ss
+        elif len(ss) > 2:
+            province, city, county = ss[:3]
+
     my_df = CITY_DF
     cur_len = 0
     if province:
@@ -73,8 +82,8 @@ def search(province=None, city=None, county=None):
     else:
         return []
 
-
 # if __name__ == '__main__':
     # ret = search(province='贵州',city='贵阳', county='白云区')
     # ret = search(county='华安')
+    # ret = search("山东 济南 历下")
     # print(ret)
