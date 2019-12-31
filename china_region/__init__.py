@@ -1,11 +1,11 @@
 # from .core import *
 
 from china_region.core import (
-    search
+    search, search_all, sample
 )
 
 __title__ = 'china_region'
-__version__ = '0.0.10'
+__version__ = '0.0.11'
 __author__ = 'sfyc23'
 __license__ = 'MIT'
 __copyright__ = '''

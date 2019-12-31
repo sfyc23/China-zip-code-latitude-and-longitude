@@ -7,21 +7,43 @@ from china_region.constants import (
     CITY_DF
 )
 
+__all__ = ['search', 'search_all', 'sample']
+
 
 def search(province=None, city=None, county=None):
     """
+    只获取匹配的第一个数据。
+
     >>> import china_region
-    >>> china_region.search(county='华安')
+    >>> china_region.search('辽宁 铁岭')
+    {'province': '辽宁省', 'city': '铁岭市', 'county': '铁岭市', 'longitude': 123.83, 'latitude': 42.28, 'zipCode': '112000'}
+
+    :param province: str, 省份
+    :param city: str, 市
+    :param county: str, 县
+    :return: dcit
+    """
+    all_data = search_all(province, city, county)
+    if all_data:
+        return all_data[0]
+    return {}
+
+
+def search_all(province=None, city=None, county=None):
+    """
+    获取匹配到的所有数据
+    >>> import china_region
+    >>> china_region.search_all(county='华安')
     [{'province': '福建省', 'city': '漳州市', 'county': '华安县', 'longitude': 117.53, 'latitude': 25.02, 'zipCode': '363800'}]
-    >>> china_region.search(province='福建省',city='华安')
+    >>> china_region.search_all(province='福建省',city='华安')
     [{'province': '福建省', 'city': '漳州市', 'county': '华安县', 'longitude': 117.53, 'latitude': 25.02, 'zipCode': '363800'}]
-    >>> china_region.search(province='贵州',city='贵阳',county='白云')
+    >>> china_region.search_all(province='贵州',city='贵阳',county='白云')
     [{'province': '贵州省', 'city': '贵阳市', 'county': '白云区', 'longitude': 106.65, 'latitude': 26.68, 'zipCode': '550014'}]
 
     :param province: str, 省份
     :param city: str, 市
     :param county: str, 县
-    :return:list
+    :return: list item dict
     """
 
     # 如果是 "山东 济南"主动分割
@@ -82,8 +104,23 @@ def search(province=None, city=None, county=None):
     else:
         return []
 
+
+def sample():
+    """
+    获取一个随机的地址
+    :return: dict ，例如：{'province': '山西省', 'city': '临汾市', 'county': '洪洞县', 'longitude': 111.67, 'latitude': 36.25, 'zipCode': '041600'}
+    """
+    yy = CITY_DF.sample()
+    cc = yy.to_dict('records')[0]
+    return cc
+
+
 # if __name__ == '__main__':
-    # ret = search(province='贵州',city='贵阳', county='白云区')
-    # ret = search(county='华安')
-    # ret = search("山东 济南 历下")
-    # print(ret)
+    # ret = search_all(province='贵州',city='贵阳', county='白云区')
+    # ret = search_all(county='华安')
+    # ret = search_all("山东 济南 历下")
+    #
+    # ret = search('辽宁 铁岭')
+    # yy = CITY_DF.sample()
+    # cc = yy.to_dict('records')[0]
+    # print(cc)

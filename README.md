@@ -1,6 +1,6 @@
 中国地区邮编经纬度/工具（Python 版）
 =============================
-[![pypi](https://img.shields.io/badge/pypi-0.0.8-yellow.svg)](https://pypi.org/project/china-region/) 
+[![pypi](https://img.shields.io/badge/pypi-0.0.11-yellow.svg)](https://pypi.org/project/china-region/) 
 ![python_vesion](https://img.shields.io/badge/python-%3E3-green.svg)  
 
    
@@ -32,13 +32,23 @@
 
 ## 使用示例
 ```
+    # 获取满足条件的所有地址
     >>> import china_region
-    >>> china_region.search(county='华安')
+    >>> china_region.search_all(county='华安')
     [{'province': '福建省', 'city': '漳州市', 'county': '华安县', 'longitude': 117.53, 'latitude': 25.02, 'zipCode': '363800'}]
-    >>> china_region.search(province='福建省',city='华安')
+    >>> china_region.search_all(province='福建省',city='华安')
     [{'province': '福建省', 'city': '漳州市', 'county': '华安县', 'longitude': 117.53, 'latitude': 25.02, 'zipCode': '363800'}]
-    >>> china_region.search(province='贵州',city='贵阳',county='白云')
+    >>> china_region.search_all(province='贵州',city='贵阳',county='白云')
     [{'province': '贵州省', 'city': '贵阳市', 'county': '白云区', 'longitude': 106.65, 'latitude': 26.68, 'zipCode': '550014'}]
+
+    # 获取满足条件的第一个地址
+    >>> china_region.search('辽宁 铁岭')
+    {'province': '辽宁省', 'city': '铁岭市', 'county': '铁岭市', 'longitude': 123.83, 'latitude': 42.28, 'zipCode': '112000'}
+    
+    # 获取一个随机的地址
+    >>> china_region.sample()
+    {'province': '山西省', 'city': '临汾市', 'county': '洪洞县', 'longitude': 111.67, 'latitude': 36.25, 'zipCode': '041600'}
+
 ```
 
 ## 资源文件
